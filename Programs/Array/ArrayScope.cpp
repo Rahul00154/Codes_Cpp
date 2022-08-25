@@ -34,7 +34,7 @@ int main()
     cout << array[i] << " ";
   }
 
-  cout << endl;
+  cout <<endl ;
 
   return 0;
 }
