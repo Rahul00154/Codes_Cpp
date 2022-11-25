@@ -9,9 +9,12 @@ class Hero{
   int health;
   public:
   char level;
+  char* name;
+  static int timeToComplete;
 
   Hero(){
      cout<<"constructor called"<<endl;
+     name = new char[100];
   }
 
   //parameterised constructor
@@ -26,8 +29,20 @@ class Hero{
     this->health = health;
   }
 
+  //copy Constructor
+  /*
+  Hero(Hero& temp){
+    cout<<"Copy constructor called"<<endl;
+    this->health = temp.health;
+    this->level = temp.level;
+  } */
+
   void print(){
-    cout<< level << endl;
+
+    cout<< " [";
+    cout<<"Name: "<<this->name<<" ,";
+    cout<<" level " <<this->level<< " ,";
+    cout<<"Health "<<this->health<< " ]";
   }
   
   int getHealth() { 
@@ -44,19 +59,96 @@ class Hero{
   void setLevel(char ch){
     level  = ch;
   }
+  void setName(char name[]){
+      strcpy(this->name,name);
+  }
+  static int random(){
+     return timeToComplete;
+  }
+
+  ~Hero(){
+    cout<<"Destructor Called"<<endl; 
+  }
 
 };
+int Hero::timeToComplete = 5;
 
 int main(){
     
+    cout<<Hero::timeToComplete<<endl;
+    
+    cout<<Hero::random()<<endl;
+
+    /*
+    //static 
+    Hero a;
+
+    //dynamic
+    Hero *b = new Hero();
+    //manual destructor call
+    delete b;
+
+
+
+
+    /*
+    Hero hero1;
+    hero1.setHealth(14);
+    hero1.setLevel('E');
+    char name[6] = "Rahul";
+    
+    hero1.setName(name);
+    //hero1.print();
+
+    //use default copy constructor
+
+    Hero hero2(hero1);
+    //hero2.print();
+    //Hero hero2 = hero1;
+    hero1.name[0] = 'A';
+    hero1.print();
+
+    hero2.print();
+    hero1 = hero2;
+    hero1.print();
+    hero2.print();
+    
+    
+    
+    
+    
+    /*
+    Hero S(70,'C');
+    S.print();
+    //copy constructorz 
+    Hero R(S);
+    R.print();
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
    // cout<<"Hi"<<endl;
     //object created statically
-    Hero ramesh(10);
-    cout<<"Address of ramesh"<<&ramesh<<endl;
+    //Hero ramesh(10);
+    //cout<<"Address of ramesh"<<&ramesh<<endl;
+    //ramesh.print();
     //object created dynamically
-    Hero *h = new Hero();
+    //Hero *h = new Hero();
+    //h->print();
+
+    //Hero temp(22,'A');
+    //temp.print();
 
 
 
