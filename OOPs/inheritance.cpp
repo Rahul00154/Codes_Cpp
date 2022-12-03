@@ -23,7 +23,7 @@ class Male:public Human{
     
     public:
     string color;
-
+    
     void sleep(){
        cout<<"Male sleeping "<<endl;
     }
@@ -37,6 +37,11 @@ int main(){
   cout<<obj1.color<<endl;
   cout<<obj1.weight<<endl;
   cout<<obj1.height<<endl;
+
+  obj1.setWeight(84);
+
+  cout<<obj1.weight<<endl;
+  obj1.sleep();
 
 
 
