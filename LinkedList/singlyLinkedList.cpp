@@ -44,7 +44,8 @@ void print(Node* &head){
 
 void insertAtPosition(Node* &head,int position,int d){
    
-   //insert at start
+   
+   //Function To Insert Node at Position 1
    if(position == 1){
      insertAtHead(head,d);
      return;
