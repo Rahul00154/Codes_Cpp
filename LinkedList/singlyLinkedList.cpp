@@ -7,11 +7,22 @@ class Node{
   int data;
   Node* next;
   
-  //CONSTRUCTOR
+  //Constructor to set value
   Node(int data){
     this->data = data;
     this->next = NULL;
   }
+  
+  ~Node(){
+    int value = this->data;
+    //memory free
+    if(this->next!=NULL){
+      delete next;
+      this->next = NULL;
+    }
+   cout<< "Memory is free for node With Data" << value <<endl;
+  }
+
 };
 
 void insertAtHead(Node* &head,int d){
@@ -52,7 +63,6 @@ void insertAtPosition(Node* &tail,Node* &head,int position,int d){
    }
    
    
-  
    Node* temp = head;
    int count = 1;
 
@@ -75,6 +85,30 @@ void insertAtPosition(Node* &tail,Node* &head,int position,int d){
 
 }
 
+void deletion(int position,Node* &head){
+    
+    if(position==1){
+      Node* temp = head;
+      head = head->next;
+      //Memory Free start node
+      temp->next = NULL;
+      delete temp;
+    }
+    else{
+      Node* curr = head;
+      Node* prev = NULL;
+    
+      int cnt = 1;
+      while(cnt<position){
+        prev = curr;
+        curr = curr->next;
+        cnt++;
+      }
+      prev->next = curr->next;
+      curr->next = NULL;
+      delete curr;
+    }
+}
 
 int main(){
 
@@ -94,6 +128,9 @@ int main(){
     print(head);
 
     insertAtPosition(tail,head,4,33);
+    print(head);
+
+    deletion(4,head);
     print(head);
 
     cout << "Head " << head->data <<endl;
