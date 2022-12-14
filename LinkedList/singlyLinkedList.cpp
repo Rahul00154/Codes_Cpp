@@ -55,13 +55,11 @@ void print(Node* &head){
 
 void insertAtPosition(Node* &tail,Node* &head,int position,int d){
    
-   
    //Function To Insert Node at Position 1
    if(position == 1){
      insertAtHead(head,d);
      return;
    }
-   
    
    Node* temp = head;
    int count = 1;
