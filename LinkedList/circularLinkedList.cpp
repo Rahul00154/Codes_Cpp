@@ -1,0 +1,76 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Node{
+   public:
+   int data;
+   Node* next;
+
+   Node(int d){
+     this->data = data;
+     this->next = NULL;
+   }
+
+   ~Node(){
+      int val = this->data;
+      if(this->next!=NULL){
+        delete next;
+        next =NULL;
+      }
+
+      cout<<"Memory is free for node with data "<<val <<endl;
+   }
+};
+
+void insertNode(Node* &tail,int element,int d){
+   
+   //empty list
+   if(tail==NULL){
+     Node* new_Node = new Node(d);
+     tail = new_Node;
+     new_Node->next = new_Node;
+   }
+   else{
+     //non-empty list
+     Node* curr = tail;
+     while(curr->data!=element){
+      curr = curr->next;
+     }
+     //elemwnt found
+     Node* temp = new Node(d);
+     temp->next = curr->next;
+     curr->next = temp;
+   }
+}
+
+void print(Node* tail){
+    Node* temp = tail;
+
+    //empty list
+    if(tail==NULL){
+     cout << "List is empty" << endl;
+     return;
+    }
+
+    do{
+      cout<<tail->data <<endl;
+      tail = tail->next;
+    }while(tail!=temp);
+     
+    cout<<endl;
+    
+    
+
+}
+
+int main(){
+
+
+   Node* tail = NULL;
+   //Empty list me insert
+   insertNode(tail,1,3);
+   print(tail);
+
+
+return 0;
+}
