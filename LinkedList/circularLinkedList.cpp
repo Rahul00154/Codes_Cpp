@@ -7,7 +7,7 @@ class Node{
    Node* next;
 
    Node(int d){
-     this->data = data;
+     this->data = d;
      this->next = NULL;
    }
 
@@ -43,6 +43,39 @@ void insertNode(Node* &tail,int element,int d){
    }
 }
 
+void deleteNode(Node* &tail,int value){
+    //empty list
+    if(tail==NULL){
+      cout<<" List is empty," << endl;
+    }
+    else{
+        //non-empty list
+        Node* prev = tail;
+        Node* curr = prev->next;
+        while(curr->data!=value){
+           prev = curr;
+           curr = curr->next;
+        }
+
+        prev->next = curr->next;
+        //1 Node linked list
+        if(curr==prev){
+          tail=NULL;
+        }
+        // >2 Node
+        else if(tail==curr){
+           tail=prev;
+        }
+        if(tail == curr){
+          tail = prev;
+        }
+
+        curr->next = NULL;
+        delete curr;
+    }
+
+}
+
 void print(Node* tail){
     Node* temp = tail;
 
@@ -53,7 +86,7 @@ void print(Node* tail){
     }
 
     do{
-      cout<<tail->data <<endl;
+      cout<<tail->data <<" ";
       tail = tail->next;
     }while(tail!=temp);
      
@@ -69,6 +102,24 @@ int main(){
    Node* tail = NULL;
    //Empty list me insert
    insertNode(tail,1,3);
+   print(tail);
+   
+   insertNode(tail,3,5);
+   print(tail);
+   
+   insertNode(tail,5,7);
+   print(tail);
+
+   insertNode(tail,7,9);
+   print(tail);
+
+   insertNode(tail,5,6);
+   print(tail);
+
+   insertNode(tail,3,4);
+   print(tail);
+
+   deleteNode(tail,3);
    print(tail);
 
 
