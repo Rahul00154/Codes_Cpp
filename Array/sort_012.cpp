@@ -3,6 +3,7 @@ using namespace std;
 
 void sort012(int arr[], int n)
 {
+  /*
   // Dutch Flag Algorithm
   int low = 0;
   int mid = 0;
@@ -20,6 +21,27 @@ void sort012(int arr[], int n)
     else
       swap(arr[mid], arr[high--]);
   }
+  */
+
+ int j = 0;
+ for(int  i =j;i<n;i++){
+
+    if(arr[i] == 0){
+      swap(arr[i],arr[j]);
+      j++;
+    
+    }
+   
+ }
+ for(int  i =0;i<n;i++){
+
+    if(arr[i] == 1){
+       swap(arr[i],arr[j]);
+       j++;
+    
+    }
+   
+ }
 }
 
 void printArray(int arr[],int n){
